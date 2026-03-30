@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GNX | College Tech Club - Innovate &amp; Build</title>
+  <meta name="description" content="GNX is the premier college tech club for innovators, builders, and developers. Join us for workshops, hackathons, and cutting-edge projects.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Boxicons for premium iconography -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <style>
+    :root {
+      --primary: #FF7E5F; /* Coral/Orange */
+      --primary-glow: rgba(255, 126, 95, 0.4);
+      --secondary: #FEB47B;
+      --accent: #00D2FF; /* Cyan Accent */
+      --accent-glow: rgba(0, 210, 255, 0.4);
+      --bg-dark: #05070a; 
+      --bg-card: rgba(15, 20, 30, 0.7);
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-main: #FFFFFF;
+      --text-dim: rgba(255, 255, 255, 0.5);
+      --font-main: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+      --section-padding: 120px 5%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--primary), var(--secondary));
+      border-radius: 10px;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 126, 95, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.05) 0%, transparent 40%);
+    }
+
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Glassmorphism Core */
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 25px 5%;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 35px;
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 100px;
+      background: rgba(10, 15, 25, 0.7);
+      backdrop-filter: blur(15px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-container.scrolled {
+      background: rgba(5, 7, 10, 0.9);
+      border-color: var(--primary);
+      padding: 10px 45px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .nav-links { display: flex; gap: 35px; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    #menu-toggle {
+      display: none;
+      font-size: 2rem;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    .btn-live {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      box-shadow: 0 4px 15px var(--primary-glow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Hero Section */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding-top: 80px;
+      position: relative;
+    }
+
+    .logo-container {
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .logo-container::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+      z-index: -1;
+      filter: blur(40px);
+    }
+
+    .main-logo-img {
+      width: 400px;
+      max-width: 90vw;
+      filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
+    }
+
+    .tagline {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #fff, var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      max-width: 800px;
+      line-height: 1.3;
+    }
+
+    /* Highlights Section */
+    .highlights-section {
+      padding: 80px 5%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .highlight-card {
+      padding: 50px 30px;
+      text-align: center;
+      border-radius: 35px;
+    }
+
+    .highlight-card i {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 25px;
+      filter: drop-shadow(0 0 10px var(--primary-glow));
+    }
+
+    .highlight-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      font-weight: 800;
+    }
+
+    .highlight-card p {
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    /* Event Cards */
+    .events-section {
+      padding: var(--section-padding);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .card-horizontal {
+      width: 100%;
+      max-width: 1000px;
+      padding: 50px;
+      border-radius: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 6px 15px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      border: 1px solid var(--primary-glow);
+    }
+
+    .card-content {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .btn-register, .btn-gallery {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      border: none;
+      padding: 16px 35px;
+      border-radius: 20px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      cursor: pointer;
+      box-shadow: 0 10px 30px var(--primary-glow);
+      transition: transform 0.3s;
+    }
+
+    .btn-register:hover, .btn-gallery:hover { transform: scale(1.05); }
+
+    .card-right img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 25px;
+      mask-image: linear-gradient(to bottom, black 80%, transparent);
+    }
+
+    /* About Us Section */
+    .about-section {
+      padding: var(--section-padding);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .section-title {
+      font-size: 4rem;
+      font-weight: 900;
+      margin-bottom: 40px;
+      letter-spacing: -2px;
+    }
+
+    .card-horizontal-about {
+      width: 100%;
+      max-width: 1000px;
+      padding: 40px 60px;
+      border-radius: 40px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .about-icon img {
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      padding: 25px;
+      border-radius: 35px;
+      box-shadow: 0 15px 40px var(--primary-glow);
+    }
+
+    .about-text h3 {
+      font-size: 2.2rem;
+      font-weight: 800;
+    }
+
+    .about-image img {
+      width: 250px;
+      border-radius: 25px;
+      box-shadow: 10px 10px 40px rgba(0,0,0,0.5);
+    }
+
+    /* Feedback Form */
+    .feedback-section {
+      padding: var(--section-padding);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .section-title-feedback {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent);
+      text-shadow: 0 0 30px var(--accent-glow);
+    }
+
+    .feedback-sub {
+      color: var(--text-dim);
+      font-size: 1.2rem;
+      margin: 15px 0 50px;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .feedback-form {
+      width: 100%;
+      max-width: 700px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .input-group { position: relative; }
+    .input-group.textarea { grid-column: span 2; }
+
+    .input-group i {
+      position: absolute;
+      left: 25px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+
+    .input-group.textarea i { top: 35px; transform: none; }
+
+    .input-group input, .input-group textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 20px 25px 20px 65px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .input-group textarea { height: 180px; }
+
+    .input-group input:focus, .input-group textarea:focus {
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 30px var(--primary-glow);
+      outline: none;
+    }
+
+    /* Gallery Styles */
+    .gallery-section {
+      padding: var(--section-padding);
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+      max-width: 1300px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .gallery-item {
+      position: relative;
+      height: 300px;
+      border-radius: 30px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(5, 7, 10, 0.9), transparent);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 30px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .gallery-item:hover img { transform: scale(1.1); }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-overlay h4 { font-size: 1.5rem; margin-bottom: 5px; }
+    .gallery-overlay p { font-size: 0.9rem; color: var(--primary); font-weight: 700; }
+
+    /* Team Section Styles */
+    .team-section {
+      padding: var(--section-padding);
+      text-align: center;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .team-card {
+      padding: 40px;
+      border-radius: 40px;
+      text-align: center;
+      position: relative;
+    }
+
+    .team-img-wrapper {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      padding: 5px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 10px 25px var(--primary-glow);
+    }
+
+    .team-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--bg-dark);
+    }
+
+    .team-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .team-card p {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .team-socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .team-socials a {
+      font-size: 1.5rem;
+      color: var(--text-dim);
+      transition: 0.3s;
+    }
+
+    .team-socials a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .btn-submit {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: none;
+      padding: 20px;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px var(--primary-glow);
+      transition: 0.3s;
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.02);
+      box-shadow: 0 15px 40px var(--primary-glow);
+    }
+
+    /* Footer */
+    .main-footer {
+      background: #020408;
+      padding: 100px 5% 50px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.5fr;
+      gap: 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo-img { width: 180px; margin-bottom: 25px; }
+    .footer-left p {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 2px;
+    }
+
+    .footer-center h4, .footer-right h4 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 30px;
+      color: #fff;
+    }
+
+    .footer-center ul { list-style: none; display: flex; flex-direction: column; gap: 15px; }
+    .footer-center a {
+      color: var(--text-dim);
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    .footer-center a:hover { color: #fff; padding-left: 10px; }
+
+    .footer-right p { color: var(--text-dim); margin-bottom: 20px; }
+
+    .social-icons { display: flex; gap: 25px; margin-top: 30px; }
+    .social-icons a {
+      font-size: 2rem;
+      color: var(--primary);
+      transition: 0.3s;
+    }
+    .social-icons a:hover { transform: translateY(-10px) scale(1.2); color: var(--accent); }
+
+    /* Reveal Animations */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Cursor Glow */
+    .cursor-glow {
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255, 126, 95, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+    }
+
+    /* Mobile Responsiveness */
+  @media (max-width: 900px) {
+    #menu-toggle { display: block; }
+    
+    .nav-links {
+      position: fixed;
+      top: -100vh;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: var(--bg-dark);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      transition: top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      backdrop-filter: blur(20px);
+    }
+
+    .nav-links.active { top: 0; }
+
+    .nav-links a { font-size: 1.5rem; }
+
+    .footer-grid { grid-template-columns: 1fr; gap: 50px; }
+      .card-content { grid-template-columns: 1fr; }
+      .card-horizontal-about { grid-template-columns: 1fr; text-align: center; }
+      .about-icon { display: flex; justify-content: center; }
+      .about-image { display: none; }
+      .feedback-form { grid-template-columns: 1fr; }
+      .input-group.textarea { grid-column: auto; }
+      .section-title { font-size: 2.5rem; }
+      .tagline { font-size: 1.4rem; padding: 0 5%; }
+      .nav-links { display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  
+  <header>
+    <nav class="nav-container glass">
+      <div class="nav-links">
+        <a href="#home">HOME</a>
+        <a href="#about">ABOUT US</a>
+        <a href="#events">EVENTS</a>
+        <a href="#gallery">GALLERY</a>
+        <a href="#team">OUR TEAM</a>
+        <a href="#feedback">FEEDBACK</a>
+      </div>
+      <div id="menu-toggle"><i class='bx bx-menu'></i></div>
+      <a href="#live" class="btn-live">Live Event</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="logo-container">
+        <img src="assets/logo.png" alt="GNX Logo" class="main-logo-img">
+      </div>
+      <p class="tagline">"Built by students Powered by curiosity Driven by code"</p>
+      <div class="hero-btns" style="margin-top: 40px; display: flex; gap: 20px;">
+        <a href="#about" class="btn-register">Get Started</a>
+        <a href="#gallery" class="btn-live" style="background: transparent; border: 1px solid var(--primary);">Explore</a>
+      </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights" class="highlights-section">
+      <div class="highlights-grid">
+        <div class="highlight-card glass">
+          <i class='bx bxs-group'></i>
+          <h3>Collaborative</h3>
+          <p>Peer-to-peer mentorship and team-based projects.</p>
+        </div>
+        <div class="highlight-card glass">
+          <i class='bx bxs-bolt'></i>
+          <h3>Fast-paced</h3>
+          <p>Staying at the forefront with weekly workshops.</p>
+        </div>
+        <div class="highlight-card glass">
+          <i class='bx bxs-award'></i>
+          <h3>Excellence</h3>
+          <p>Winning hackathons and creating impact.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Upcoming Events -->
+    <section id="events" class="events-section">
+      <div class="card-horizontal glass">
+        <div class="card-badge">UPCOMING EVENT</div>
+        <div class="card-content">
+          <div class="card-left">
+            <button class="btn-register">
+              <i class='bx bxs-calendar-plus'></i>
+              REGISTER FOR EVENTS
+            </button>
+            <div class="dots">...</div>
+          </div>
+          <div class="card-right">
+             <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400" alt="Event" class="card-img">
+          </div>
+        </div>
+      </div>
+
+      <div class="card-horizontal glass">
+        <div class="card-badge">UPCOMING EVENT</div>
+        <div class="card-content">
+          <div class="card-left">
+            <button class="btn-gallery" onclick="location.hash='#gallery'">
+              <i class='bx bxs-collection'></i>
+              VIEW GALLERY
+            </button>
+            <div class="dots">...</div>
+          </div>
+          <div class="card-right">
+             <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&q=80&w=400" alt="Gallery" class="card-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery-section">
+      <h2 class="section-title">Club Memories</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item glass">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600" alt="Work">
+          <div class="gallery-overlay">
+            <h4>Code Fest 2025</h4>
+            <p>Workshop Series</p>
+          </div>
+        </div>
+        <div class="gallery-item glass">
+          <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600" alt="Work">
+          <div class="gallery-overlay">
+            <h4>Team Building</h4>
+            <p>Indoor Fun</p>
+          </div>
+        </div>
+        <div class="gallery-item glass">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600" alt="Work">
+          <div class="gallery-overlay">
+            <h4>Annual Hack</h4>
+            <p>Global Competition</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+      <h2 class="section-title">About Us</h2>
+      
+      <div class="card-horizontal-about glass">
+        <div class="about-icon">
+          <img src="assets/logo.png" alt="Logo mini">
+        </div>
+        <div class="about-text">
+          <h3>Who are we ?</h3>
+        </div>
+      </div>
+
+      <div class="card-horizontal-about glass">
+        <div class="about-text">
+          <h3>What we do ?</h3>
+        </div>
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=300" alt="Team activity">
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Team Section -->
+    <section id="team" class="team-section">
+      <h2 class="section-title">Core Team</h2>
+      <div class="team-grid">
+        <div class="team-card glass">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=300" alt="Lead">
+          </div>
+          <h3>Arnav Singh</h3>
+          <p>Founder / Lead</p>
+          <div class="team-socials">
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <a href="#"><i class='bx bxl-github'></i></a>
+          </div>
+        </div>
+        <div class="team-card glass">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300" alt="Tech">
+          </div>
+          <h3>Riya Das</h3>
+          <p>Technical Architect</p>
+          <div class="team-socials">
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <a href="#"><i class='bx bxl-github'></i></a>
+          </div>
+        </div>
+        <div class="team-card glass">
+          <div class="team-img-wrapper">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300" alt="Design">
+          </div>
+          <h3>Devansh Jha</h3>
+          <p>UX/UI Specialist</p>
+          <div class="team-socials">
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <a href="#"><i class='bx bxl-github'></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feedback Section -->
+    <section id="feedback" class="feedback-section">
+      <h2 class="section-title-feedback">WE VALUE YOUR FEEDBACK !!</h2>
+      <p class="feedback-sub">Let us know how we can improve your experience at GNX</p>
+      
+      <form class="feedback-form">
+        <div class="input-group">
+          <i class='bx bx-user'></i>
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="input-group">
+          <i class='bx bx-envelope'></i>
+          <input type="email" placeholder="Your email" required>
+        </div>
+        <div class="input-group textarea">
+          <textarea placeholder="Your message..." required></textarea>
+        </div>
+        <button type="submit" class="btn-submit">
+          SEND MESSAGE <i class='bx bx-send'></i>
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-grid">
+      <div class="footer-left">
+        <img src="assets/logo.png" alt="GNX Logo" class="footer-logo-img">
+        <p>Tech Club of NSEC</p>
+      </div>
+      
+      <div class="footer-center">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#team">Our Team</a></li>
+          <li><a href="#feedback">Feedback</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-right">
+        <h4>Contact Us</h4>
+        <p><i class='bx bx-map'></i> 123 Tech Drive, College Campus, City, State, 12345</p>
+        <p><i class='bx bx-envelope'></i> info@gnxtechclub.com</p>
+        <div class="social-icons">
+          <a href="#"><i class='bx bxl-linkedin'></i></a>
+          <a href="#"><i class='bx bxl-instagram'></i></a>
+          <a href="#"><i class='bx bxl-facebook'></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>&copy; 2026 GNX Tech Club. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Particle System for Background
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.init();
+      }
+
+      init() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = Math.random() > 0.5 ? '#FF7E5F' : '#00D2FF';
+        this.opacity = Math.random() * 0.5 + 0.1;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+          this.init();
+        }
+      }
+
+      draw() {
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    for (let i = 0; i < 100; i++) {
+      particles.push(new Particle());
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Advanced Intersection Observer for Premium Reveal
+    const revealOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, revealOptions);
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.card-horizontal, .card-horizontal-about, .feedback-section, .section-title, .hero, .team-card, .gallery-item');
+      items.forEach(item => {
+        item.classList.add('reveal-item');
+        revealObserver.observe(item);
+      });
+    });
+
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.toggle('bx-menu');
+        icon.classList.toggle('bx-x');
+      });
+    }
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        const icon = menuToggle?.querySelector('i');
+        if (icon) {
+          icon.classList.add('bx-menu');
+          icon.classList.remove('bx-x');
+        }
+      });
+    });
+
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      const nav = document.querySelector('.nav-container');
+      if (window.scrollY > 100) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // Smooth Scroll for Navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Interactive Cursor Glow
+    const cursorGlow = document.createElement('div');
+    cursorGlow.className = 'cursor-glow';
+    document.body.appendChild(cursorGlow);
+
+    window.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    console.log('%c GNX CLUB 🚀 ', 'background: #FF7E5F; color: #fff; font-size: 20px; font-weight: 800; border-radius: 8px; padding: 5px 15px;');
+  </script>
+</body>
+</html>
