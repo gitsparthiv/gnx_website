@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="/assets/logo.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register | GNX Tech Club</title>
+  <meta name="description" content="Join GNX Tech Club. Register now to be part of the most innovative student community.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Boxicons for premium iconography -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <style>
+    :root {
+      --primary: #FF7E5F; /* Coral/Orange */
+      --primary-glow: rgba(255, 126, 95, 0.4);
+      --secondary: #FEB47B;
+      --accent: #00D2FF; /* Cyan Accent */
+      --accent-glow: rgba(0, 210, 255, 0.4);
+      --bg-dark: #05070a; 
+      --bg-card: rgba(15, 20, 30, 0.7);
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-main: #FFFFFF;
+      --text-dim: rgba(255, 255, 255, 0.5);
+      --font-main: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+      --section-padding: 120px 5%;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track { background: var(--bg-dark); }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(var(--primary), var(--secondary));
+      border-radius: 10px;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 126, 95, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.05) 0%, transparent 40%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* Glassmorphism Core */
+    .glass {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Header & Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 25px 5%;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 35px;
+      width: 100%;
+      max-width: 1100px;
+      border-radius: 100px;
+      background: rgba(10, 15, 25, 0.7);
+      backdrop-filter: blur(15px);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .nav-links { display: flex; gap: 35px; }
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      transition: all 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 10px var(--primary-glow);
+    }
+
+    .btn-live {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      box-shadow: 0 4px 15px var(--primary-glow);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Main Content */
+    main {
+      flex: 1;
+      padding: 140px 5% 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .registration-container {
+      width: 100%;
+      max-width: 800px;
+      padding: 60px;
+      border-radius: 40px;
+      text-align: center;
+    }
+
+    .form-title {
+      font-size: 3rem;
+      font-weight: 900;
+      margin-bottom: 10px;
+      background: linear-gradient(to right, #fff, var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-subtitle {
+      color: var(--text-dim);
+      margin-bottom: 40px;
+      font-size: 1.1rem;
+    }
+
+    .registration-form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      text-align: left;
+    }
+
+    .input-group {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .input-group.full-width {
+      grid-column: span 2;
+    }
+
+    .input-group label {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-dim);
+      margin-left: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+
+    .input-wrapper input, .input-wrapper select, .input-wrapper textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid var(--glass-border);
+      border-radius: 15px;
+      padding: 15px 20px 15px 55px;
+      color: #fff;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s;
+      appearance: none;
+    }
+
+    .input-wrapper textarea {
+      resize: vertical;
+      min-height: 100px;
+      padding-top: 15px;
+    }
+
+    .input-wrapper select {
+      cursor: pointer;
+    }
+
+    .input-wrapper select option {
+      background: var(--bg-dark);
+      color: #fff;
+    }
+
+    .input-wrapper input:focus, .input-wrapper select:focus, .input-wrapper textarea:focus {
+      border-color: var(--primary);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 20px var(--primary-glow);
+      outline: none;
+    }
+
+    /* Fixed icon position for textarea only */
+    .input-group textarea ~ i {
+      top: 22px;
+      transform: none;
+    }
+
+    .btn-submit {
+      grid-column: span 2;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      border: none;
+      padding: 18px;
+      border-radius: 15px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px var(--primary-glow);
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px var(--primary-glow);
+    }
+
+    /* Footer */
+    .main-footer {
+      background: #020408;
+      padding: 60px 5% 30px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .footer-bar {
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .registration-container {
+        padding: 40px 20px;
+      }
+      .registration-form {
+        grid-template-columns: 1fr;
+      }
+      .input-group.full-width {
+        grid-column: span 1;
+      }
+      .form-title {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Reveal Animations */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Cursor Glow */
+    .cursor-glow {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 126, 95, 0.1) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  
+  <header>
+    <nav class="nav-container glass">
+      <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="index.html#about">ABOUT US</a>
+        <a href="index.html#events">EVENTS</a>
+      </div>
+      <a href="index.html" class="btn-live">Back to Home</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="registration-container glass reveal-item">
+      <h1 class="form-title">Register For The Event</h1>
+      <p class="form-subtitle">Fill in your details to start your journey with us.</p>
+      
+      <form class="registration-form">
+        <!-- Name -->
+        <div class="input-group full-width">
+          <label for="name">Full Name</label>
+          <div class="input-wrapper">
+            <i class='bx bx-user'></i>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+          </div>
+        </div>
+
+        <!-- College ID -->
+        <div class="input-group">
+          <label for="college-id">College ID</label>
+          <div class="input-wrapper">
+            <i class='bx bx-id-card'></i>
+            <input type="text" id="college-id" placeholder="e.g. 241099XXXX" required>
+          </div>
+        </div>
+
+        <!-- College -->
+        <div class="input-group">
+          <label for="college">College</label>
+          <div class="input-wrapper">
+            <i class='bx bx-buildings'></i>
+            <input type="text" id="college" placeholder="Enter college name" required>
+          </div>
+        </div>
+
+        <!-- Department -->
+        <div class="input-group full-width">
+          <label for="dept">Department</label>
+          <div class="input-wrapper">
+            <i class='bx bx-code-alt'></i>
+            <select id="dept" required>
+              <option value="" disabled selected>Select your department</option>
+              <option value="CSE">Computer Science & Engineering</option>
+              <option value="IT">Information Technology</option>
+              <option value="ECE">Electronics & Communication</option>
+              <option value="EE">Electrical Engineering</option>
+              <option value="ME">Mechanical Engineering</option>
+              <option value="CE">Civil Engineering</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Other Department (Hidden by default) -->
+        <div id="other-dept-group" class="input-group full-width" style="display: none;">
+          <label for="other-dept">Specify Department</label>
+          <div class="input-wrapper">
+            <i class='bx bx-edit-alt'></i>
+            <input type="text" id="other-dept" placeholder="Enter your department name">
+          </div>
+        </div>
+
+        <!-- Year -->
+        <div class="input-group">
+          <label for="year">Year</label>
+          <div class="input-wrapper">
+            <i class='bx bx-calendar'></i>
+            <select id="year" required>
+              <option value="" disabled selected>Select Year</option>
+              <option value="1">1st Year</option>
+              <option value="2">2nd Year</option>
+              <option value="3">3rd Year</option>
+              <option value="4">4th Year</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Section -->
+        <div class="input-group">
+          <label for="section">Section</label>
+          <div class="input-wrapper">
+            <i class='bx bx-group'></i>
+            <input type="text" id="section" placeholder="e.g. A, B, C" required>
+          </div>
+        </div>
+
+        <!-- Expectations -->
+        <div class="input-group full-width">
+          <label for="expectations">What do you expect from this event?</label>
+          <div class="input-wrapper">
+            <textarea id="expectations" placeholder="Share your goals or what you'd like to learn/achieve..." required></textarea>
+            <i class='bx bx-bullseye'></i>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          Complete Registration <i class='bx bx-right-arrow-alt'></i>
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="footer-bar">
+      <p>&copy; 2026 GNX Tech Club. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Particle System (Simplified for this page)
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.init();
+      }
+      init() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
+        this.color = Math.random() > 0.5 ? '#FF7E5F' : '#00D2FF';
+        this.opacity = Math.random() * 0.5 + 0.1;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.init();
+      }
+      draw() {
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.globalAlpha = 1;
+      }
+    }
+
+    for (let i = 0; i < 50; i++) particles.push(new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Reveal Animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const item = document.querySelector('.reveal-item');
+      setTimeout(() => item.classList.add('revealed'), 100);
+    });
+
+    // Cursor Glow
+    const cursorGlow = document.createElement('div');
+    cursorGlow.className = 'cursor-glow';
+    document.body.appendChild(cursorGlow);
+
+    window.addEventListener('mousemove', (e) => {
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    // Handle "Other" Department visibility
+    const deptSelect = document.getElementById('dept');
+    const otherDeptGroup = document.getElementById('other-dept-group');
+    const otherDeptInput = document.getElementById('other-dept');
+
+    deptSelect.addEventListener('change', () => {
+      if (deptSelect.value === 'Other') {
+        otherDeptGroup.style.display = 'flex';
+        otherDeptInput.setAttribute('required', 'required');
+        otherDeptInput.focus();
+      } else {
+        otherDeptGroup.style.display = 'none';
+        otherDeptInput.removeAttribute('required');
+      }
+    });
+
+    // Form submission handling
+    document.querySelector('.registration-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Registration Successful! Welcome to GNX Tech Club.');
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>
