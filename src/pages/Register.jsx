@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -14,26 +16,32 @@ const Register = () => {
   });
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const item = document.querySelector('.reveal-item');
-    if (item) {
-      setTimeout(() => item.classList.add('revealed'), 100);
-    }
-  }, []);
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id || e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert('Registration Successful! Welcome to GNX Tech Club.');
-    navigate('/');
+    navigate('/success');
+  };
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.6 }
   };
 
   return (
     <main style={{ paddingTop: '140px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-      <div className="registration-container glass reveal-item">
+      <Helmet>
+        <title>Join the Community | GNX Registration</title>
+        <meta name="description" content="Register for upcoming GNX events and workshops." />
+      </Helmet>
+
+      <motion.div 
+        {...fadeInUp}
+        className="registration-container glass"
+      >
         <h1 className="form-title">Register For The Event</h1>
         <p className="form-subtitle">Fill in your details to start your journey with us.</p>
         
@@ -127,13 +135,19 @@ const Register = () => {
             </div>
           </div>
 
-          <button type="submit" className="btn-submit">
+          <motion.button 
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            type="submit" 
+            className="btn-submit"
+          >
             Complete Registration <i className='bx bx-right-arrow-alt'></i>
-          </button>
+          </motion.button>
         </form>
-      </div>
+      </motion.div>
     </main>
   );
 };
 
 export default Register;
+
