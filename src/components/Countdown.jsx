@@ -32,7 +32,7 @@ const Countdown = ({ targetDate }) => {
 
   return (
     <div className="cd-wrapper">
-      <div className="cd-title">Next event in</div>
+      <div className="cd-title">Something big is coming</div>
       <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
         {Object.entries(timeLeft).map(([unit, value]) => (
           <div key={unit} className="countdown-box">

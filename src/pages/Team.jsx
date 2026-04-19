@@ -25,7 +25,7 @@ const Team = () => {
         { 
           name: "Rajdeep Sadhu", 
           role: "President", 
-          bio: "Leading GNX with a vision for open-source excellence and innovation.", 
+          bio: "The one steering the ship — passionate about open source, community, and getting things done.", 
           // TODO: Upload image to public/Member/2025-2026/rajdeep.jpg
           img: "/Member/2025-2026/rajdeep.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -34,7 +34,7 @@ const Team = () => {
         { 
           name: "Akshay Chandra", 
           role: "Vice-President", 
-          bio: "Strategizing and overseeing the club's technical initiatives.", 
+          bio: "Keeps the big picture in focus while making sure nothing falls through the cracks.", 
           // TODO: Upload image to public/Member/2025-2026/akshay.jpg
           img: "/Member/2025-2026/akshay.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -43,7 +43,7 @@ const Team = () => {
         { 
           name: "Ayantika Chaudhuri", 
           role: "Female Lead", 
-          bio: "Promoting diversity and empowerment within the technical community.", 
+          bio: "Making sure every voice is heard — championing inclusivity and mentoring newcomers.", 
           // TODO: Upload image to public/Member/2025-2026/ayantika.jpg
           img: "/Member/2025-2026/ayantika.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -52,7 +52,7 @@ const Team = () => {
         { 
           name: "Parthiv Ghosh", 
           role: "Technical Team Lead", 
-          bio: "Architecting the technical foundation and system infrastructure.", 
+          bio: "The person you go to when something breaks. Leads the tech team and builds the tools we all rely on.", 
           // TODO: Upload image to public/Member/2025-2026/parthiv.jpg
           img: "/Member/2025-2026/parthiv.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -61,7 +61,7 @@ const Team = () => {
         { 
           name: "Protysuh Banik", 
           role: "Media and PR Lead", 
-          bio: "Managing the club's presence and communications with the world.", 
+          bio: "The storyteller — makes sure the world knows what GNX is up to, one post at a time.", 
           // TODO: Upload image to public/Member/2025-2026/protysuh.jpg
           img: "/Member/2025-2026/protysuh.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -70,7 +70,7 @@ const Team = () => {
         { 
           name: "Ronak Pathak", 
           role: "Event Organizers Lead", 
-          bio: "Masterminding the logistics and execution of GNX events.", 
+          bio: "If there's an event happening smoothly, it's because this person planned every detail.", 
           // TODO: Upload image to public/Member/2025-2026/ronak.jpg
           img: "/Member/2025-2026/ronak.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -79,7 +79,7 @@ const Team = () => {
         { 
           name: "Krishna Raj", 
           role: "Design Team Lead", 
-          bio: "Crafting the visual identity and brand aesthetics of GNX.", 
+          bio: "The creative eye — shapes how GNX looks and feels, from posters to presentations.", 
           // TODO: Upload image to public/Member/2025-2026/krishna.jpg
           img: "/Member/2025-2026/krishna.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -88,7 +88,7 @@ const Team = () => {
         { 
           name: "Aditya Anand", 
           role: "Technical Team", 
-          bio: "Driving core technical developments and open-source projects.", 
+          bio: "Loves diving deep into code and figuring out how things work under the hood.", 
           // TODO: Upload image to public/Member/2025-2026/aditya.jpg
           img: "/Member/2025-2026/aditya.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -97,7 +97,7 @@ const Team = () => {
         { 
           name: "Borshan Haque", 
           role: "Technical Team", 
-          bio: "Building robust systems and backend architectures.", 
+          bio: "Backend enthusiast who enjoys building systems that just work, every single time.", 
           // TODO: Upload image to public/Member/2025-2026/borshan.jpg
           img: "/Member/2025-2026/borshan.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -106,7 +106,7 @@ const Team = () => {
         { 
           name: "Srijit Sahoo", 
           role: "Media and PR", 
-          bio: "Managing networking and public outreach campaigns.", 
+          bio: "Connects people, spreads the word, and makes sure no event goes unnoticed.", 
           // TODO: Upload image to public/Member/2025-2026/srijit.jpg
           img: "/Member/2025-2026/srijit.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -115,7 +115,7 @@ const Team = () => {
         { 
           name: "Saurav Kumar Singh", 
           role: "Event Organizer", 
-          bio: "Ensuring seamless coordination and event flow.", 
+          bio: "The behind-the-scenes hero who makes sure every event runs like clockwork.", 
           // TODO: Upload image to public/Member/2025-2026/saurav.jpg
           img: "/Member/2025-2026/saurav.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -124,7 +124,7 @@ const Team = () => {
         { 
           name: "Randhir Raj", 
           role: "Design Team", 
-          bio: "Creating impactful UI/UX and digital graphics.", 
+          bio: "Turns ideas into visuals that grab attention and tell a story.", 
           // TODO: Upload image to public/Member/2025-2026/randhir.jpg
           img: "/Member/2025-2026/randhir.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -133,7 +133,7 @@ const Team = () => {
         { 
           name: "Sambhas Maiti", 
           role: "Technical Team", 
-          bio: "Exploring new tech stacks and implementing solutions.", 
+          bio: "Always experimenting with the latest tech — if there's a new framework, he's already tried it.", 
           // TODO: Upload image to public/Member/2025-2026/sambhas.jpg
           img: "/Member/2025-2026/sambhas.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -142,7 +142,7 @@ const Team = () => {
         { 
           name: "Sumit Agarwal", 
           role: "Technical Team", 
-          bio: "Focused on problem-solving and code optimization.", 
+          bio: "Finds elegant solutions to tricky problems — the kind of coder who makes bugs disappear.", 
           // TODO: Upload image to public/Member/2025-2026/sumit_a.jpg
           img: "/Member/2025-2026/sumit_a.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -151,7 +151,7 @@ const Team = () => {
         { 
           name: "Pragati Pandey", 
           role: "Media and PR", 
-          bio: "Bridging the gap between GNX and the student community.", 
+          bio: "The bridge between GNX and the rest of the campus — always bringing new people in.", 
           // TODO: Upload image to public/Member/2025-2026/pragati.jpg
           img: "/Member/2025-2026/pragati.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -160,7 +160,7 @@ const Team = () => {
         { 
           name: "Trisha Das", 
           role: "Media and PR", 
-          bio: "Content creation and social media management.", 
+          bio: "Crafts the posts, reels, and stories that keep our socials buzzing with activity.", 
           // TODO: Upload image to public/Member/2025-2026/trisha.jpg
           img: "/Member/2025-2026/trisha.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -169,7 +169,7 @@ const Team = () => {
         { 
           name: "Sayantika Ray", 
           role: "Media and PR", 
-          bio: "Enhancing the club's public image and outreach.", 
+          bio: "Works behind the scenes to make GNX look good — and she's really good at it.", 
           // TODO: Upload image to public/Member/2025-2026/sayantika.jpg
           img: "/Member/2025-2026/sayantika.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -178,7 +178,7 @@ const Team = () => {
         { 
           name: "Freja Chandani", 
           role: "Media and PR", 
-          bio: "Coordinating communications and internal PR.", 
+          bio: "Keeps the team informed and aligned — the communication backbone of GNX.", 
           // TODO: Upload image to public/Member/2025-2026/freja.jpg
           img: "/Member/2025-2026/freja.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -187,7 +187,7 @@ const Team = () => {
         { 
           name: "Niloy Kar", 
           role: "Media and PR", 
-          bio: "Managing media relations and event coverage.", 
+          bio: "Our go-to for event coverage — captures every moment worth remembering.", 
           // TODO: Upload image to public/Member/2025-2026/niloy.jpg
           img: "/Member/2025-2026/niloy.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -196,7 +196,7 @@ const Team = () => {
         { 
           name: "Harsh Shaw", 
           role: "Event Organizer", 
-          bio: "Logistics expert for large-scale technical events.", 
+          bio: "Handles the heavy lifting — logistics, coordination, and all the things nobody sees.", 
           // TODO: Upload image to public/Member/2025-2026/harsh.jpg
           img: "/Member/2025-2026/harsh.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -205,7 +205,7 @@ const Team = () => {
         { 
           name: "Sumit Kumar Singh", 
           role: "Event Organizer", 
-          bio: "Coordinating team efforts for flawless event execution.", 
+          bio: "Brings teams together and makes sure everyone's on the same page when it counts.", 
           // TODO: Upload image to public/Member/2025-2026/sumit_k.jpg
           img: "/Member/2025-2026/sumit_k.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -214,7 +214,7 @@ const Team = () => {
         { 
           name: "Subhadip Gayen", 
           role: "Event Organizer", 
-          bio: "On-ground event management and technical support.", 
+          bio: "The first to arrive and the last to leave — manages everything on the ground.", 
           // TODO: Upload image to public/Member/2025-2026/subhadip.jpg
           img: "/Member/2025-2026/subhadip.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -223,7 +223,7 @@ const Team = () => {
         { 
           name: "Rishav Raj Singh", 
           role: "Design Team", 
-          bio: "Specializing in brand identity and visual storytelling.", 
+          bio: "Thinks in colors and shapes — gives GNX's brand identity its unique personality.", 
           // TODO: Upload image to public/Member/2025-2026/rishav.jpg
           img: "/Member/2025-2026/rishav.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -232,7 +232,7 @@ const Team = () => {
         { 
           name: "Sarbojit Roy", 
           role: "Design Team", 
-          bio: "Motion graphics and creative asset design.", 
+          bio: "Makes things move — literally. Our go-to for animations and motion graphics.", 
           // TODO: Upload image to public/Member/2025-2026/sarbojit.jpg
           img: "/Member/2025-2026/sarbojit.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -241,7 +241,7 @@ const Team = () => {
         { 
           name: "Sania Arman", 
           role: "Design Team", 
-          bio: "User-centric design and intuitive interface crafting.", 
+          bio: "Designs with the user in mind — if it's intuitive and pretty, she probably made it.", 
           // TODO: Upload image to public/Member/2025-2026/sania.jpg
           img: "/Member/2025-2026/sania.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -250,7 +250,7 @@ const Team = () => {
         { 
           name: "Kumari Sanjana", 
           role: "Design Team", 
-          bio: "Typography and abstract design concept development.", 
+          bio: "Has an eye for typography and clean layouts that make content shine.", 
           // TODO: Upload image to public/Member/2025-2026/sanjana.jpg
           img: "/Member/2025-2026/sanjana.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -269,7 +269,7 @@ const Team = () => {
         { 
           name: "Arpan Chowdhury", 
           role: "President", 
-          bio: "Founding visionary leading GNX during its formative session.", 
+          bio: "The one who started it all — built GNX from scratch in its founding year.", 
           // TODO: Upload image to public/Member/2024-2025/arpan_c.jpg
           img: "/Member/2024-2025/arpan_c.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -278,7 +278,7 @@ const Team = () => {
         { 
           name: "Vaibhav Kundu", 
           role: "Vice-President", 
-          bio: "Pioneering technical growth and community leadership.", 
+          bio: "Helped shape GNX's direction and culture from day one.", 
           // TODO: Upload image to public/Member/2024-2025/vaibhav.jpg
           img: "/Member/2024-2025/vaibhav.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -287,7 +287,7 @@ const Team = () => {
         { 
           name: "Ahana Biswas", 
           role: "Female Lead", 
-          bio: "Championing technical education and diversity at GNX.", 
+          bio: "Made sure GNX was a welcoming space for everyone from the very beginning.", 
           // TODO: Upload image to public/Member/2024-2025/ahana.jpg
           img: "/Member/2024-2025/ahana.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -296,7 +296,7 @@ const Team = () => {
         { 
           name: "Mayukh Bhowmik", 
           role: "Tech Team", 
-          bio: "Technical specialist driving early-stage engineering projects.", 
+          bio: "One of the first tech minds who set the technical bar for everything that followed.", 
           // TODO: Upload image to public/Member/2024-2025/mayukh_b.jpg
           img: "/Member/2024-2025/mayukh_b.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -305,7 +305,7 @@ const Team = () => {
         { 
           name: "Mayukh Mondal", 
           role: "Dev and App Team", 
-          bio: "Building the digital foundation for GNX web initiatives.", 
+          bio: "Helped build GNX's first digital presence — our early web and app projects.", 
           // TODO: Upload image to public/Member/2024-2025/mayukh_m.jpg
           img: "/Member/2024-2025/mayukh_m.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -314,7 +314,7 @@ const Team = () => {
         { 
           name: "Ronak Pathak", 
           role: "Design Team", 
-          bio: "Establishing the early visual identity of the GNX brand.", 
+          bio: "Designed GNX's first logo, posters, and the visual language we still use.", 
           // TODO: Upload image to public/Member/2024-2025/ronak.jpg
           img: "/Member/2024-2025/ronak.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -323,7 +323,7 @@ const Team = () => {
         { 
           name: "Rajdeep Sadhu", 
           role: "Event Organizer", 
-          bio: "Coordinating the first waves of GNX technical workshops.", 
+          bio: "Organized the very first GNX workshops — laid the groundwork for everything.", 
           // TODO: Upload image to public/Member/2024-2025/rajdeep.jpg
           img: "/Member/2024-2025/rajdeep.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -332,7 +332,7 @@ const Team = () => {
         { 
           name: "Tuhin Ghosh", 
           role: "Media and PR", 
-          bio: "Drafting the initial outreach strategies for GNX.", 
+          bio: "Put GNX on the campus map — got the word out when nobody knew who we were.", 
           // TODO: Upload image to public/Member/2024-2025/tuhin.jpg
           img: "/Member/2024-2025/tuhin.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -341,7 +341,7 @@ const Team = () => {
         { 
           name: "Sebanti Dasgupta", 
           role: "Tech Team", 
-          bio: "Focusing on technical documentation and system research.", 
+          bio: "Documented everything so the next batch wouldn't have to start from zero.", 
           // TODO: Upload image to public/Member/2024-2025/sebanti.jpg
           img: "/Member/2024-2025/sebanti.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -350,7 +350,7 @@ const Team = () => {
         { 
           name: "Sukalyan Roy", 
           role: "Tech Team", 
-          bio: "Engineering lead for open-source utility tools.", 
+          bio: "Built some of our earliest open-source tools — a true builder at heart.", 
           // TODO: Upload image to public/Member/2024-2025/sukalyan.jpg
           img: "/Member/2024-2025/sukalyan.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -359,7 +359,7 @@ const Team = () => {
         { 
           name: "Avishek Sen", 
           role: "Tech Team", 
-          bio: "Specialist in systems engineering and performance.", 
+          bio: "The systems thinker — always optimizing, always making things faster.", 
           // TODO: Upload image to public/Member/2024-2025/avishek.jpg
           img: "/Member/2024-2025/avishek.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -368,7 +368,7 @@ const Team = () => {
         { 
           name: "Saujanya Das", 
           role: "Dev and App Team", 
-          bio: "Application developer focusing on mobile ecosystems.", 
+          bio: "Brought GNX into mobile — built our first app prototypes from the ground up.", 
           // TODO: Upload image to public/Member/2024-2025/saujanya.jpg
           img: "/Member/2024-2025/saujanya.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -377,7 +377,7 @@ const Team = () => {
         { 
           name: "Srinjoy Pramanik", 
           role: "Dev and App Team", 
-          bio: "Frontend architect for core community platforms.", 
+          bio: "Made our platforms look good and work smoothly — the frontend foundation.", 
           // TODO: Upload image to public/Member/2024-2025/srinjoy.jpg
           img: "/Member/2024-2025/srinjoy.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -386,7 +386,7 @@ const Team = () => {
         { 
           name: "Parthiv Ghosh", 
           role: "Dev and App Team", 
-          bio: "Full-stack developer for automated systems.", 
+          bio: "Full-stack developer who believes in automating everything that can be automated.", 
           // TODO: Upload image to public/Member/2024-2025/parthiv.jpg
           img: "/Member/2024-2025/parthiv.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -395,7 +395,7 @@ const Team = () => {
         { 
           name: "Krishna Raj", 
           role: "Design Team", 
-          bio: "Creative lead for digital assets and typography.", 
+          bio: "The creative force behind our early digital assets and brand typography.", 
           // TODO: Upload image to public/Member/2024-2025/krishna.jpg
           img: "/Member/2024-2025/krishna.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -404,7 +404,7 @@ const Team = () => {
         { 
           name: "Akshay Chandra", 
           role: "Design Team", 
-          bio: "UI/UX designer focused on accessibility.", 
+          bio: "Made sure our designs weren't just pretty — they were usable by everyone.", 
           // TODO: Upload image to public/Member/2024-2025/akshay.jpg
           img: "/Member/2024-2025/akshay.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -413,7 +413,7 @@ const Team = () => {
         { 
           name: "Ayantika Chaudhuri", 
           role: "Event Organizer", 
-          bio: "Lead coordinator for community meetups.", 
+          bio: "Brought people together — from casual meetups to structured events.", 
           // TODO: Upload image to public/Member/2024-2025/ayantika.jpg
           img: "/Member/2024-2025/ayantika.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -422,7 +422,7 @@ const Team = () => {
         { 
           name: "Srijit Sahoo", 
           role: "Event Organizer", 
-          bio: "Managing event flow and participant engagement.", 
+          bio: "Kept events running smoothly and made sure everyone had a great time.", 
           // TODO: Upload image to public/Member/2024-2025/srijit.jpg
           img: "/Member/2024-2025/srijit.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -431,7 +431,7 @@ const Team = () => {
         { 
           name: "Soumi Guria", 
           role: "Media and PR", 
-          bio: "Communication expert for student collaborations.", 
+          bio: "Our communication pro — built connections that helped GNX grow fast.", 
           // TODO: Upload image to public/Member/2024-2025/soumi.jpg
           img: "/Member/2024-2025/soumi.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -440,7 +440,7 @@ const Team = () => {
         { 
           name: "Protyush Banik", 
           role: "Media and PR", 
-          bio: "Social media strategist for GNX brand growth.", 
+          bio: "Grew our social media from zero — every follower we earned started with his strategy.", 
           // TODO: Upload image to public/Member/2024-2025/protyush.jpg
           img: "/Member/2024-2025/protyush.jpg",
           linkedin: "#", github: "#", instagram: "#",
@@ -464,10 +464,10 @@ const Team = () => {
           animate={{ opacity: 1, y: 0 }}
           className="section-title"
         >
-          CORE ENGINE
+          MEET THE TEAM
         </motion.h1>
-        <p style={{ color: 'var(--text-dim)', maxWidth: '600px', margin: '20px auto 40px' }}>
-          Navigate through our history and meet the minds behind the GNX technical ecosystem.
+        <p style={{ color: 'var(--text-dim)', maxWidth: '600px', margin: '20px auto 40px', lineHeight: 1.7 }}>
+          The people behind GNX — the ones who organize the events, write the code, design the posters, and keep the community running.
         </p>
 
         {/* ── YEAR SELECTOR (As per user image) ── */}

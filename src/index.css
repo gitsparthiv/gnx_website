@@ -33,6 +33,11 @@
   --year-accent: var(--primary);
   --year-border: rgba(230, 62, 0, 0.2);
   --year-glow: rgba(230, 62, 0, 0.4);
+
+  /* Form / Input System */
+  --input-bg: rgba(255, 255, 255, 0.03);
+  --input-border: rgba(255, 255, 255, 0.08);
+  --section-title-start: #ffffff;
 }
 
 /* ── Light Theme (Refined Cyber) ── */
@@ -914,5 +919,49 @@ header {
     border-top: none;
     border-left: none;
     border-right: none;
+  }
+}
+
+/* ── Accessibility: Focus Visible ── */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* ── Text Selection Branding ── */
+::selection {
+  background: rgba(230, 62, 0, 0.3);
+  color: #fff;
+}
+
+::-moz-selection {
+  background: rgba(230, 62, 0, 0.3);
+  color: #fff;
+}
+
+/* ── Custom Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: rgba(230, 62, 0, 0.3); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+/* ── Smooth Transitions for Interactive Elements ── */
+a, button { transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1); }
+
+/* ── Image defaults ── */
+img { max-width: 100%; height: auto; }
+
+/* ── Reduced Motion Preference ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

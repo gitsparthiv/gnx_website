@@ -19,19 +19,19 @@ const Gallery = () => {
     {
       year: "2025",
       images: [
-        { url: "/assets/gallery/FB_IMG_1776603317665.jpg.jpeg", title: "GNX 2025" },
-        { url: "/assets/gallery/FB_IMG_1776603339662.jpg.jpeg", title: "GNX 2025" },
-        { url: "/assets/gallery/FB_IMG_1776603349482.jpg.jpeg", title: "GNX 2025" },
-        { url: "/assets/gallery/FB_IMG_1776603363552.jpg.jpeg", title: "GNX 2025" }
+        { url: "/assets/gallery/FB_IMG_1776603317665.jpg.jpeg", title: "GNX Community 2025" },
+        { url: "/assets/gallery/FB_IMG_1776603339662.jpg.jpeg", title: "Workshop Session" },
+        { url: "/assets/gallery/FB_IMG_1776603349482.jpg.jpeg", title: "Team Building" },
+        { url: "/assets/gallery/FB_IMG_1776603363552.jpg.jpeg", title: "Tech Talk 2025" }
       ]
     },
     {
       year: "2024", 
       images: [
-        { url: "/assets/gallery/IMG-20260419-WA0020.jpg.jpeg", title: "GNX 2024" },
-        { url: "/assets/gallery/IMG-20260419-WA0019.jpg.jpeg", title: "GNX 2024" },
-        { url: "/assets/gallery/IMG_20260419_200040.jpg.jpeg", title: "GNX 2024" },
-        { url: "/assets/gallery/IMG-20260419-WA0017.jpg.jpeg", title: "GNX 2024" },
+        { url: "/assets/gallery/IMG-20260419-WA0020.jpg.jpeg", title: "Inaugural Session" },
+        { url: "/assets/gallery/IMG-20260419-WA0019.jpg.jpeg", title: "First Workshop" },
+        { url: "/assets/gallery/IMG_20260419_200040.jpg.jpeg", title: "Founding Members" },
+        { url: "/assets/gallery/IMG-20260419-WA0017.jpg.jpeg", title: "Open Source Day" },
       ]
     }
   ];
@@ -39,32 +39,27 @@ const Gallery = () => {
   const currentGallery = galleryData.find(g => g.year === activeYear) || { year: activeYear, images: [] };
 
   return (
-    <main className="page-padding">
+    <main className="gallery-page">
       <Helmet>
         <title>Gallery | GNX Tech Club</title>
+        <meta name="description" content="Explore the journey of GNX Tech Club through photos — workshops, hackathons, and community moments." />
       </Helmet>
 
-      <section className="gallery-header" style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <motion.h1 
+      <section className="gallery-hero" style={{ textAlign: 'center' }}>
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="section-title"
+          transition={{ duration: 0.7 }}
         >
-          OUR MOMENTS
-        </motion.h1>
-        <p style={{ color: 'var(--text-dim)', maxWidth: '600px', margin: '20px auto 40px' }}>
-          Explore our journey through the years — building, learning, and fostering innovation.
-        </p>
+          <span className="gallery-badge">SNAPSHOTS</span>
+          <h1 className="section-title">OUR MEMORIES</h1>
+          <p className="gallery-subtitle">
+            Workshops, hackathons, team outings, and everything in between — this is what GNX looks like in action.
+          </p>
+        </motion.div>
 
-        {/* ── YEAR SELECTOR (Consistent with Team Page) ── */}
-        <div className="year-selector-container" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '15px',
-          flexWrap: 'wrap',
-          marginBottom: '80px',
-          padding: '0 20px'
-        }}>
+        {/* ── YEAR SELECTOR ── */}
+        <div className="gallery-year-selector">
           {years.map(year => (
             <motion.button
               key={year}
@@ -72,7 +67,6 @@ const Gallery = () => {
               whileTap={{ scale: 0.95 }}
               onClick={() => setActiveYear(year)}
               className={`year-tab ${activeYear === year ? 'active' : ''}`}
-              style={{ minWidth: '120px' }}
             >
               {year}
             </motion.button>
@@ -83,20 +77,14 @@ const Gallery = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={activeYear}
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 0.3 }}
-          className="gallery-year-section"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.35 }}
+          className="gallery-content"
         >
           {currentGallery.images.length > 0 ? (
-            <div className="gallery-detailed-grid" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))',
-              gap: '30px',
-              maxWidth: '1300px',
-              margin: '0 auto'
-            }}>
+            <div className="gallery-sym-grid">
               {currentGallery.images.map((img, i) => (
                 <motion.div 
                   key={i}
@@ -104,35 +92,25 @@ const Gallery = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className="gallery-item-detailed glass"
+                  className="gallery-card glass"
                   onClick={() => openGallery(img.title, [img])}
-                  style={{ 
-                    borderRadius: '24px', 
-                    overflow: 'hidden', 
-                    height: '400px',
-                    position: 'relative',
-                    cursor: 'pointer'
-                  }}
                 >
-                  <img src={img.url} alt={img.title} style={{ width: '100%', height: '100%', objectFit: 'cover', transition: '0.5s' }} />
-                  <div className="gallery-overlay" style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(to top, rgba(8, 8, 15, 0.9), transparent)',
-                    display: 'flex',
-                    alignItems: 'bottom',
-                    padding: '30px',
-                    opacity: 0,
-                    transition: '0.3s'
-                  }}>
-                    <h3 style={{ color: '#fff', fontSize: '1.2rem', marginTop: 'auto' }}>{img.title}</h3>
+                  <img src={img.url} alt={img.title} loading="lazy" />
+                  <div className="gallery-card-overlay">
+                    <div className="gallery-card-info">
+                      <h3>{img.title}</h3>
+                      <span>{activeYear}</span>
+                    </div>
+                    <div className="gallery-card-action">
+                      <i className='bx bx-expand-alt'></i>
+                    </div>
                   </div>
                 </motion.div>
               ))}
             </div>
           ) : (
-            <div style={{ textAlign: 'center', padding: '100px 0', color: 'var(--text-dim)' }}>
-              <i className='bx bx-image-alt' style={{ fontSize: '4rem', marginBottom: '20px' }}></i>
+            <div className="gallery-empty">
+              <i className='bx bx-image-alt'></i>
               <p>No memories archived for {activeYear} yet.</p>
             </div>
           )}
@@ -147,11 +125,116 @@ const Gallery = () => {
       />
       
       <style>{`
-        .gallery-item-detailed:hover img { transform: scale(1.1); }
-        .gallery-item-detailed:hover .gallery-overlay { opacity: 1; }
-        .page-padding { padding: 180px 5% 100px; }
+        .gallery-page { padding: 180px 5% 100px; min-height: 100vh; }
+        .gallery-badge {
+          color: var(--primary);
+          font-size: 0.75rem;
+          font-weight: 800;
+          letter-spacing: 4px;
+          margin-bottom: 20px;
+          display: block;
+        }
+        .gallery-subtitle {
+          color: var(--text-dim);
+          max-width: 550px;
+          margin: 20px auto 0;
+          line-height: 1.7;
+          font-size: 1rem;
+        }
+        .gallery-year-selector {
+          display: flex;
+          justify-content: center;
+          gap: 15px;
+          flex-wrap: wrap;
+          margin: 50px 0 70px;
+        }
+        .gallery-content {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        /* Symmetrical 2x2 Grid */
+        .gallery-sym-grid {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 24px;
+        }
+        .gallery-card {
+          border-radius: 20px;
+          overflow: hidden;
+          position: relative;
+          cursor: pointer;
+          aspect-ratio: 4 / 3;
+        }
+        .gallery-card img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .gallery-card:hover img {
+          transform: scale(1.08);
+        }
+        .gallery-card-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(8, 8, 15, 0.85) 0%, rgba(8, 8, 15, 0.2) 40%, transparent 100%);
+          display: flex;
+          align-items: flex-end;
+          justify-content: space-between;
+          padding: 28px;
+          opacity: 0;
+          transition: opacity 0.4s;
+        }
+        .gallery-card:hover .gallery-card-overlay {
+          opacity: 1;
+        }
+        .gallery-card-info h3 {
+          font-size: 1.15rem;
+          font-weight: 700;
+          margin-bottom: 4px;
+        }
+        .gallery-card-info span {
+          font-size: 0.75rem;
+          color: var(--primary);
+          font-weight: 700;
+          letter-spacing: 1px;
+        }
+        .gallery-card-action {
+          width: 42px;
+          height: 42px;
+          border-radius: 12px;
+          background: rgba(255,255,255,0.1);
+          backdrop-filter: blur(8px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+          color: #fff;
+          transition: 0.3s;
+          flex-shrink: 0;
+        }
+        .gallery-card:hover .gallery-card-action {
+          background: var(--primary);
+        }
+
+        .gallery-empty {
+          text-align: center;
+          padding: 80px 0;
+          color: var(--text-dim);
+        }
+        .gallery-empty i {
+          font-size: 3.5rem;
+          margin-bottom: 16px;
+          display: block;
+          opacity: 0.4;
+        }
+
         @media (max-width: 768px) {
-          .year-selector-container button { padding: 10px 20px; min-width: 100px; font-size: 0.9rem; }
+          .gallery-page { padding-top: 140px; }
+          .gallery-sym-grid { grid-template-columns: 1fr; }
+          .gallery-card { aspect-ratio: 16 / 10; }
+          .gallery-year-selector button { min-width: 100px; padding: 10px 20px; font-size: 0.9rem; }
         }
       `}</style>
     </main>
@@ -159,5 +242,3 @@ const Gallery = () => {
 };
 
 export default Gallery;
-
-

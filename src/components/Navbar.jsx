@@ -12,7 +12,14 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu on route change
   useEffect(() => { setMenuActive(false); }, [location]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuActive ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuActive]);
 
   const isRegisterOrSuccess =
     location.pathname === '/register' || location.pathname === '/success';
@@ -27,23 +34,23 @@ const Navbar = () => {
           </div>
         </Link>
 
-        {/* ── Centre: Nav links (desktop) ── */}
+        {/* ── Centre: Nav links (desktop + mobile drawer) ── */}
         <div className={`nav-links ${menuActive ? 'active' : ''}`}>
-          <a href="/">HOME</a>
-          <a href="/#about">ABOUT US</a>
-          <a href="/#events">EVENTS</a>
+          <Link to="/">HOME</Link>
+          <Link to="/events">EVENTS</Link>
           <Link to="/gallery">GALLERY</Link>
           <Link to="/team">OUR TEAM</Link>
-          <a href="/#feedback">FEEDBACK</a>
+          <a href="/#about">ABOUT</a>
+          <a href="/#feedback">CONTACT</a>
         </div>
 
-        {/* ── Right: Theme toggle + CTA + hamburger ── */}
+        {/* ── Right: CTA + hamburger ── */}
         <div className="nav-right">
           {!isRegisterOrSuccess && (
             <Link to="/register" className="btn-live">Register Now</Link>
           )}
           {isRegisterOrSuccess && (
-            <a href="/" className="btn-live">Back to Home</a>
+            <Link to="/" className="btn-live">Back to Home</Link>
           )}
 
           <button
@@ -56,9 +63,23 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
+
+      {/* Mobile overlay backdrop */}
+      {menuActive && (
+        <div 
+          className="nav-overlay" 
+          onClick={() => setMenuActive(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(0,0,0,0.5)',
+            zIndex: 999,
+            backdropFilter: 'blur(4px)'
+          }}
+        />
+      )}
     </header>
   );
 };
-
 
 export default Navbar;

@@ -183,8 +183,8 @@ const Register = () => {
 
   const renderStep1 = () => (
     <div className="step-panel">
-      <h2 className="step-title">Select Objective</h2>
-      <p className="step-desc">Choose the technological vector you wish to engage with.</p>
+      <h2 className="step-title">Pick an Event</h2>
+      <p className="step-desc">Which one are you signing up for? Choose below.</p>
       <div className="event-cards">
         {EVENTS.map(event => (
           <div 
@@ -213,8 +213,8 @@ const Register = () => {
 
   const renderStep2 = () => (
     <div className="step-panel">
-      <h2 className="step-title">Personal Vector</h2>
-      <p className="step-desc">Enter your identification details into the system.</p>
+      <h2 className="step-title">About You</h2>
+      <p className="step-desc">Tell us a bit about yourself so we know who's coming.</p>
       <div className="form-grid">
         <div className="full-width">
           <InputField id="name"  label="Full Name"     icon="bx-user"     placeholder="Enter your full name" required
@@ -231,8 +231,8 @@ const Register = () => {
 
   const renderStep3 = () => (
     <div className="step-panel">
-      <h2 className="step-title">Technical Credentials</h2>
-      <p className="step-desc">Provide your academic and organizational origin.</p>
+      <h2 className="step-title">College Details</h2>
+      <p className="step-desc">A few more details about where you study and what you're into.</p>
       <div className="form-grid">
         <InputField id="collegeId" label="College ID" icon="bx-id-card"   placeholder="e.g. 241099XXXX" required
           value={formData.collegeId} onChange={handleChange} error={errors.collegeId} />
@@ -317,8 +317,8 @@ const Register = () => {
 
     return (
       <div className="step-panel">
-        <h2 className="step-title">Review &amp; Confirm</h2>
-        <p className="step-desc">Double-check your details before submitting.</p>
+        <h2 className="step-title">Double Check Everything</h2>
+        <p className="step-desc">Look good? Review your info and hit submit when you're ready.</p>
 
         <div className="review-table glass">
           {rows.map(({ label, value }) => (
@@ -344,7 +344,7 @@ const Register = () => {
             <span className="custom-checkbox">
               {formData.agreeTerms && <i className="bx bx-check" />}
             </span>
-            I agree to the GNX event terms and conditions, and confirm the above details are correct.
+            I confirm the above details are correct and agree to GNX's event terms and conditions.
           </label>
           {errors.agreeTerms && (
             <span className="field-error"><i className="bx bx-error-circle" /> {errors.agreeTerms}</span>
