@@ -43,9 +43,43 @@ const MemberCard = ({ member, onClick, index }) => {
       }}>{member.role}</span>
       <p style={{ color: 'var(--text-dim)', fontSize: '14px', lineHeight: '1.6' }}>{member.bio}</p>
       
-      <div className="team-social-mini" style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '12px' }}>
-        <a href="#" onClick={(e) => e.stopPropagation()} style={{ color: 'var(--text-dim)' }}><i className='bx bxl-linkedin'></i></a>
-        <a href="#" onClick={(e) => e.stopPropagation()} style={{ color: 'var(--text-dim)' }}><i className='bx bxl-github'></i></a>
+      <div className="team-social-mini" style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '15px' }}>
+        {member.linkedin && (
+          <motion.a 
+            whileHover={{ scale: 1.2, color: 'var(--primary)', translateY: -3 }}
+            whileTap={{ scale: 0.95 }}
+            href={member.linkedin} target="_blank" rel="noopener noreferrer" 
+            onClick={(e) => e.stopPropagation()} 
+            style={{ color: 'var(--text-dim)', fontSize: '1.2rem', transition: 'color 0.2s' }} 
+            title="LinkedIn"
+          >
+            <i className='bx bxl-linkedin'></i>
+          </motion.a>
+        )}
+        {member.github && (
+          <motion.a 
+            whileHover={{ scale: 1.2, color: 'var(--primary)', translateY: -3 }}
+            whileTap={{ scale: 0.95 }}
+            href={member.github} target="_blank" rel="noopener noreferrer" 
+            onClick={(e) => e.stopPropagation()} 
+            style={{ color: 'var(--text-dim)', fontSize: '1.2rem', transition: 'color 0.2s' }} 
+            title="GitHub"
+          >
+            <i className='bx bxl-github'></i>
+          </motion.a>
+        )}
+        {member.instagram && (
+          <motion.a 
+            whileHover={{ scale: 1.2, color: 'var(--primary)', translateY: -3 }}
+            whileTap={{ scale: 0.95 }}
+            href={member.instagram} target="_blank" rel="noopener noreferrer" 
+            onClick={(e) => e.stopPropagation()} 
+            style={{ color: 'var(--text-dim)', fontSize: '1.2rem', transition: 'color 0.2s' }} 
+            title="Instagram"
+          >
+            <i className='bx bxl-instagram'></i>
+          </motion.a>
+        )}
       </div>
       
       <style>{`

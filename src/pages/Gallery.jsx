@@ -6,32 +6,32 @@ import GalleryModal from '../components/GalleryModal';
 const Gallery = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalData, setModalData] = useState({ title: '', images: [] });
-  const [activeYear, setActiveYear] = useState('2026');
+  const [activeYear, setActiveYear] = useState('2025');
 
   const openGallery = (title, images) => {
     setModalData({ title, images });
     setModalOpen(true);
   };
 
-  const years = ['2026', '2025'];
+  const years = ['2025', '2024'];
 
   const galleryData = [
     {
-      year: "2026",
+      year: "2025",
       images: [
-        { url: "/assets/gallery/FB_IMG_1776603317665.jpg.jpeg", title: "GNX 2026" },
-        { url: "/assets/gallery/FB_IMG_1776603339662.jpg.jpeg", title: "GNX 2026" },
-        { url: "/assets/gallery/FB_IMG_1776603349482.jpg.jpeg", title: "GNX 2026" },
-        { url: "/assets/gallery/FB_IMG_1776603363552.jpg.jpeg", title: "GNX 2026" }
+        { url: "/assets/gallery/FB_IMG_1776603317665.jpg.jpeg", title: "GNX 2025" },
+        { url: "/assets/gallery/FB_IMG_1776603339662.jpg.jpeg", title: "GNX 2025" },
+        { url: "/assets/gallery/FB_IMG_1776603349482.jpg.jpeg", title: "GNX 2025" },
+        { url: "/assets/gallery/FB_IMG_1776603363552.jpg.jpeg", title: "GNX 2025" }
       ]
     },
     {
-      year: "2025", 
+      year: "2024", 
       images: [
-        { url: "/assets/gallery/IMG-20260419-WA0020.jpg.jpeg", title: "GNX 2025" },
-        { url: "/assets/gallery/IMG-20260419-WA0019.jpg.jpeg", title: "GNX 2025" },
-        { url: "/assets/gallery/IMG_20260419_200040.jpg.jpeg", title: "GNX 2025" },
-        { url: "/assets/gallery/IMG-20260419-WA0017.jpg.jpeg", title: "GNX 2025" },
+        { url: "/assets/gallery/IMG-20260419-WA0020.jpg.jpeg", title: "GNX 2024" },
+        { url: "/assets/gallery/IMG-20260419-WA0019.jpg.jpeg", title: "GNX 2024" },
+        { url: "/assets/gallery/IMG_20260419_200040.jpg.jpeg", title: "GNX 2024" },
+        { url: "/assets/gallery/IMG-20260419-WA0017.jpg.jpeg", title: "GNX 2024" },
       ]
     }
   ];
