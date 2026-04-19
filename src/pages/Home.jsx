@@ -1,262 +1,176 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
 import Countdown from '../components/Countdown';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 60 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8, ease: "easeOut" }
-  };
+  const [isGlitching, setIsGlitching] = useState(false);
+  const [feedback, setFeedback] = useState({ name: '', email: '', message: '' });
 
-  const staggerContainer = {
-    initial: {},
-    whileInView: {
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
+  const stats = [
+    { label: 'Members', value: '500', suffix: '+' },
+    { label: 'Events hosted', value: '6', suffix: '+' },
+    { label: 'Years running', value: '2', suffix: '' },
+    // { label: 'Prize pool', value: '2', prefix: '₹', suffix: 'L+' },
+  ];
+
+  // ── RANDOM GLITCH CONTROLLER ──
+  useEffect(() => {
+    let timeoutId;
+    
+    const triggerGlitch = () => {
+      setIsGlitching(true);
+      const burstDuration = 150 + Math.random() * 300;
+      
+      setTimeout(() => {
+        setIsGlitching(false);
+        const nextPause = 3000 + Math.random() * 5000;
+        timeoutId = setTimeout(triggerGlitch, nextPause);
+      }, burstDuration);
+    };
+
+    timeoutId = setTimeout(triggerGlitch, 2500);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  const handleFeedbackSubmit = (e) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`Feedback from ${feedback.name}`);
+    const body = encodeURIComponent(
+      `Name: ${feedback.name}\nEmail: ${feedback.email}\n\nMessage:\n${feedback.message}`
+    );
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=gnx.cse@nsec.ac.in&su=${subject}&body=${body}`;
+    window.open(gmailUrl, '_blank');
   };
 
   return (
-    <main>
-      <Helmet>
-        <title>GNX | Innovative Tech Club</title>
-        <meta name="description" content="GNX is the premier college tech club for innovators and builders." />
-      </Helmet>
-
-      {/* Hero Section */}
+    <div className="home-page">
+      {/* ── HERO SECTION ── */}
       <section className="hero" id="home">
+        <div className={`glitch-wrapper ${isGlitching ? 'is-glitching' : ''}`}>
+          <div className="glitch-red">GNX</div>
+          <div className="glitch-cyan">GNX</div>
+          <div className="glitch-yellow">GNX</div>
+          <div className="glitch-bar"></div>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="gnx-glitch-text"
+            data-text="GNX"
+          >
+            GNX
+          </motion.div>
+        </div>
+
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1 }}
-          className="logo-container"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="identity-bar"
         >
-          <img src="/assets/logo.png" alt="GNX Logo" className="main-logo-img" />
+          <div className="id-pill">GNU / Linux Group</div>
+          <div className="id-dot"></div>
+          <div className="id-location">Netaji Subhash Engineering College</div>
         </motion.div>
-        
-        <motion.p 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-          className="tagline"
-        >
-          "Built by students Powered by curiosity Driven by code"
+
+        <motion.p className="hero-description">
+          A community of <span>open source minds</span> — building, breaking, and learning together.
         </motion.p>
 
-        {/* Live Countdown */}
-        <motion.div {...fadeInUp} style={{ marginTop: '20px' }}>
-          <p style={{ color: 'var(--primary)', fontWeight: 'bold' }}>NEXT HACKATHON IN:</p>
-          <Countdown targetDate="2026-05-15T00:00:00" />
-        </motion.div>
+        <Countdown targetDate="2026-05-16T00:00:00" />
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="hero-btns" 
-          style={{ marginTop: '40px', display: 'flex', gap: '20px' }}
-        >
-          <Link to="/register" className="btn-register">Register for Upcoming Event</Link>
-          <a href="#gallery" className="btn-live" style={{ background: 'transparent', border: '1px solid var(--primary)' }}>Explore</a>
-        </motion.div>
+        <div style={{ display: 'flex', gap: '15px', marginTop: '20px' }}>
+          <Link to="/register" className="btn-primary">
+            Register for event
+          </Link>
+          <Link to="/gallery" className="btn-outline">
+            View our memories
+          </Link>
+        </div>
+
+        <div className="stats-container">
+          {stats.map((s, i) => (
+            <div key={s.label} className="stat-box">
+              <div className="stat-value">{s.prefix}{s.value}{s.suffix}</div>
+              <div className="stat-label">{s.label}</div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* Highlights Section */}
-      <section id="highlights" className="highlights-section">
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="highlights-grid"
-        >
-          <motion.div variants={fadeInUp} className="highlight-card glass">
-            <i className='bx bxs-group'></i>
-            <h3>Collaborative</h3>
-            <p>Peer-to-peer mentorship and team-based projects.</p>
-          </motion.div>
-          <motion.div variants={fadeInUp} className="highlight-card glass">
-            <i className='bx bxs-bolt'></i>
-            <h3>Fast-paced</h3>
-            <p>Staying at the forefront with weekly workshops.</p>
-          </motion.div>
-          <motion.div variants={fadeInUp} className="highlight-card glass">
-            <i className='bx bxs-award'></i>
-            <h3>Excellence</h3>
-            <p>Winning hackathons and creating impact.</p>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Upcoming Events */}
-      <section id="events" className="events-section">
-        <motion.div {...fadeInUp} className="card-horizontal glass">
-          <div className="card-badge">UPCOMING EVENT</div>
-          <div className="card-content">
-            <div className="card-left">
-              <Link to="/register" className="btn-register">
-                <i className='bx bxs-calendar-plus'></i>
-                REGISTER NOW
-              </Link>
-              <div className="dots">...</div>
-            </div>
-            <div className="card-right">
-              <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400" alt="Event" className="card-img" />
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div {...fadeInUp} className="card-horizontal glass">
-          <div className="card-badge">UPCOMING EVENT</div>
-          <div className="card-content">
-            <div className="card-left">
-              <a href="#gallery" className="btn-gallery">
-                <i className='bx bxs-collection'></i>
-                VIEW GALLERY
-              </a>
-              <div className="dots">...</div>
-            </div>
-            <div className="card-right">
-              <img src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?auto=format&fit=crop&q=80&w=400" alt="Gallery" className="card-img" />
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
-      {/* Gallery Section */}
-      <section id="gallery" className="gallery-section">
-        <motion.h2 {...fadeInUp} className="section-title">Club Memories</motion.h2>
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="gallery-grid"
-        >
-          <motion.div variants={fadeInUp} className="gallery-item glass">
-            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600" alt="Work" />
-            <div className="gallery-overlay">
-              <h4>Code Fest 2025</h4>
-              <p>Workshop Series</p>
-            </div>
-          </motion.div>
-          <motion.div variants={fadeInUp} className="gallery-item glass">
-            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600" alt="Work" />
-            <div className="gallery-overlay">
-              <h4>Team Building</h4>
-              <p>Indoor Fun</p>
-            </div>
-          </motion.div>
-          <motion.div variants={fadeInUp} className="gallery-item glass">
-            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=600" alt="Work" />
-            <div className="gallery-overlay">
-              <h4>Annual Hack</h4>
-              <p>Global Competition</p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="about-section">
-        <motion.h2 {...fadeInUp} className="section-title">About Us</motion.h2>
-        <motion.div {...fadeInUp} className="card-horizontal-about glass">
-          <div className="about-icon">
-            <img src="/assets/logo.png" alt="Logo mini" />
-          </div>
+      {/* ── ABOUT SECTION ── */}
+      <section className="about-section" id="about">
+        <h2 className="section-title">ABOUT US</h2>
+        <div className="card-horizontal-about glass">
           <div className="about-text">
-            <h3>Who are we?</h3>
-            <p style={{ color: 'var(--text-dim)', marginTop: '10px' }}>GNX is a community of passionate developers and innovators.</p>
+            <p>
+              GNX is the official <strong>GNU/Linux group of Netaji Subhash Engineering College</strong> — a student-driven community united by a passion for open-source technology and collaborative learning. 
+              We believe in the power of free and open-source software to democratize knowledge, and we strive to bring that spirit to every corner of our campus.
+            </p>
+            <p style={{marginTop: '20px'}}>
+              From hands-on Linux workshops and hackathons to open-source contribution drives and tech talks, GNX is where curious minds come together to explore, build, and share. 
+              Whether you are just starting your journey into the world of open source or are already a seasoned contributor, GNX welcomes you to be part of a movement that values 
+              <span>freedom, transparency, and community</span> above all else.
+            </p>
           </div>
-        </motion.div>
-
-        <motion.div {...fadeInUp} className="card-horizontal-about glass">
-          <div className="about-text">
-            <h3>What we do?</h3>
-            <p style={{ color: 'var(--text-dim)', marginTop: '10px' }}>We organize workshops, hackathons, and collaborative projects.</p>
-          </div>
-          <div className="about-image">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=300" alt="Team activity" />
-          </div>
-        </motion.div>
+        </div>
       </section>
 
-      {/* Team Section */}
-      <section id="team" className="team-section">
-        <motion.h2 {...fadeInUp} className="section-title">Core Team</motion.h2>
-        <motion.div 
-          variants={staggerContainer}
-          initial="initial"
-          whileInView="whileInView"
-          viewport={{ once: true }}
-          className="team-grid"
-        >
-          <motion.div variants={fadeInUp} className="team-card glass">
-            <div className="team-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=300" alt="Lead" />
+      {/* ── EVENTS SECTION ── */}
+      <section className="events-section" id="events">
+        <h2 className="section-title">UPCOMING EVENTS</h2>
+        {[1, 2].map(i => (
+          <div key={i} className="card-horizontal glass">
+            <div className="card-content">
+              <div className="card-left">
+                <span className="card-badge">FLAGSHIP EVENT</span>
+                <h3 style={{fontSize: '1.8rem'}}>GNX Hackathon 2026</h3>
+                <p style={{color: 'var(--text-dim)'}}>Join us for 48 hours of intense building, mentorship, and big prizes.</p>
+                <button className="btn-primary" style={{alignSelf: 'flex-start'}}>Explore More</button>
+              </div>
+              <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=400" alt="Event" className="card-img" />
             </div>
-            <h3>Arnav Singh</h3>
-            <p>Founder / Lead</p>
-            <div className="team-socials">
-              <a href="#"><i className='bx bxl-linkedin'></i></a>
-              <a href="#"><i className='bx bxl-github'></i></a>
-            </div>
-          </motion.div>
-          <motion.div variants={fadeInUp} className="team-card glass">
-            <div className="team-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=300" alt="Tech" />
-            </div>
-            <h3>Riya Das</h3>
-            <p>Technical Architect</p>
-            <div className="team-socials">
-              <a href="#"><i className='bx bxl-linkedin'></i></a>
-              <a href="#"><i className='bx bxl-github'></i></a>
-            </div>
-          </motion.div>
-          <motion.div variants={fadeInUp} className="team-card glass">
-            <div className="team-img-wrapper">
-              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300" alt="Design" />
-            </div>
-            <h3>Devansh Jha</h3>
-            <p>UX/UI Specialist</p>
-            <div className="team-socials">
-              <a href="#"><i className='bx bxl-linkedin'></i></a>
-              <a href="#"><i className='bx bxl-github'></i></a>
-            </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        ))}
       </section>
 
-      {/* Feedback Section */}
-      <section id="feedback" className="feedback-section">
-        <motion.h2 {...fadeInUp} className="section-title-feedback">WE VALUE YOUR FEEDBACK !!</motion.h2>
-        <motion.p {...fadeInUp} className="feedback-sub">Let us know how we can improve your experience at GNX</motion.p>
-
-        <motion.form {...fadeInUp} className="feedback-form" onSubmit={(e) => { e.preventDefault(); alert('Feedback sent!'); }}>
+      {/* ── FEEDBACK SECTION ── */}
+      <section className="feedback-section" id="feedback">
+        <h2 className="section-title">FEEDBACK</h2>
+        <form className="feedback-form" onSubmit={handleFeedbackSubmit}>
           <div className="input-group">
-            <i className='bx bx-user'></i>
-            <input type="text" placeholder="Your name" required />
+            <input 
+              type="text" 
+              placeholder="Your Name" 
+              required 
+              value={feedback.name}
+              onChange={(e) => setFeedback({ ...feedback, name: e.target.value })}
+            />
           </div>
           <div className="input-group">
-            <i className='bx bx-envelope'></i>
-            <input type="email" placeholder="Your email" required />
+            <input 
+              type="email" 
+              placeholder="Your Gmail" 
+              required 
+              value={feedback.email}
+              onChange={(e) => setFeedback({ ...feedback, email: e.target.value })}
+            />
           </div>
-          <div className="input-group textarea">
-            <textarea placeholder="Your message..." required></textarea>
+          <div className="input-group">
+            <textarea 
+              placeholder="Your Message" 
+              required 
+              value={feedback.message}
+              onChange={(e) => setFeedback({ ...feedback, message: e.target.value })}
+            ></textarea>
           </div>
-          <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} type="submit" className="btn-submit">
-            SEND MESSAGE <i className='bx bx-send'></i>
-          </motion.button>
-        </motion.form>
+          <button type="submit" className="btn-primary">Send Message</button>
+        </form>
       </section>
-    </main>
+    </div>
   );
 };
 
 export default Home;
-

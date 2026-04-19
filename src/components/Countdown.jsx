@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Countdown = ({ targetDate }) => {
   const [timeLeft, setTimeLeft] = useState({
@@ -12,18 +12,15 @@ const Countdown = ({ targetDate }) => {
   useEffect(() => {
     const calculateTimeLeft = () => {
       const difference = +new Date(targetDate) - +new Date();
-      let timeLeft = {};
-
       if (difference > 0) {
-        timeLeft = {
+        return {
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
           hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
           minutes: Math.floor((difference / 1000 / 60) % 60),
           seconds: Math.floor((difference / 1000) % 60)
         };
       }
-
-      return timeLeft;
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     };
 
     const timer = setInterval(() => {
@@ -34,27 +31,29 @@ const Countdown = ({ targetDate }) => {
   }, [targetDate]);
 
   return (
-    <div className="countdown-container" style={{ display: 'flex', gap: '20px', justifyContent: 'center', marginTop: '30px' }}>
-      {Object.entries(timeLeft).map(([unit, value]) => (
-        <motion.div 
-          key={unit}
-          whileHover={{ y: -5 }}
-          className="countdown-box glass"
-          style={{ 
-            padding: '15px', 
-            borderRadius: '15px', 
-            minWidth: '80px',
-            textAlign: 'center'
-          }}
-        >
-          <div style={{ fontSize: '1.5rem', fontWeight: '800', color: 'var(--primary)' }}>
-            {value.toString().padStart(2, '0')}
+    <div className="cd-wrapper">
+      <div className="cd-title">Next event in</div>
+      <div style={{ display: 'flex', gap: '12px', justifyContent: 'center' }}>
+        {Object.entries(timeLeft).map(([unit, value]) => (
+          <div key={unit} className="countdown-box">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={value}
+                initial={{ y: 5, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -5, opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                style={{ fontSize: '28px', fontWeight: '500', color: 'var(--primary)', fontFamily: 'monospace', lineHeight: 1, marginBottom: '8px' }}
+              >
+                {value.toString().padStart(2, '0')}
+              </motion.div>
+            </AnimatePresence>
+            <div style={{ fontSize: '9px', color: 'rgba(255, 255, 255, 0.3)', letterSpacing: '1.5px', textTransform: 'uppercase' }}>
+              {unit}
+            </div>
           </div>
-          <div style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '1px', opacity: 0.6 }}>
-            {unit}
-          </div>
-        </motion.div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
