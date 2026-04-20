@@ -55,7 +55,7 @@ const Footer = () => {
 
       <div className="footer-bottom" style={{ justifyContent: 'center', textAlign: 'center' }}>
         <div className="footer-copyright" style={{ width: '100%' }}>
-          &copy; {new Date().getFullYear()} GNX Tech Club, NSEC Kolkata. Built with <span style={{ color: 'var(--primary)' }}>&hearts;</span> by the GNX Dev Team.
+          &copy; {new Date().getFullYear()} GNX Tech Club, NSEC Kolkata. Built with <span style={{ color: 'var(--primary)' }}>&hearts;</span> by the GNX Tech Team.
         </div>
       </div>
     </footer>

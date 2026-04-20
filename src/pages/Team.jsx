@@ -59,11 +59,11 @@ const Team = () => {
           gallery: []
         },
         { 
-          name: "Protysuh Banik", 
+          name: "Protyush Banik", 
           role: "Media and PR Lead", 
           bio: "The storyteller — makes sure the world knows what GNX is up to, one post at a time.", 
-          // TODO: Upload image to public/Member/2025-2026/protysuh.jpg
-          img: "/Member/2025-2026/protysuh.jpg",
+          // TODO: Upload image to public/Member/2025-2026/protyush.jpg
+          img: "/Member/2025-2026/protyush.jpg",
           linkedin: "#", github: "#", instagram: "#",
           gallery: []
         },
