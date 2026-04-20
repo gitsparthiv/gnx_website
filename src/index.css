@@ -133,6 +133,8 @@ header {
   backdrop-filter: blur(20px);
   border: 1px solid var(--glass-border);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1000;
 }
 
 .nav-logo-text {
@@ -854,6 +856,7 @@ header {
   font-size: 2rem;
   cursor: pointer;
   z-index: 1001;
+  position: relative;
   transition: 0.3s;
 }
 
